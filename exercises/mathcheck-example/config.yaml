@@ -1,0 +1,21 @@
+---
+title: MathCheck-example
+max_points: 2
+instructions: |
+  <p>
+    A teacher has specified a certain second degree equation that needs solving.
+    Try entering <code><=> x = 0 \/ x = 3 \/ x = -5</code> into the text field below.
+  </p>
+# acceptPost tuottaa tekstikentän sivulle
+# tiedoston palautuslomakkeen sijaan
+view_type: access.types.stdasync.acceptPost 
+fields: # näiden täytyy olla valideja HTML-formien attribuutteja
+  - name: ratkaisu # Lomakkeen nimi verkkosivulla
+    title: Ratkaisu # Näkyy syötekentän yläpuolella
+    required: True
+
+# configuration for the new Docker container grading sandbox
+container:
+  image: sesodesa/grade-mathcheck:latest
+  mount: exercises/mathcheck-example
+  cmd: /exercise/run.sh

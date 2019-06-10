@@ -1,0 +1,18 @@
+
+equation x=0 \/ x=3 \/ x=-5;
+    2x^3 + 4x^2 - 7 = 30x - 7 /* everything to the left,
+                                 the 7s cancel each other out. */
+<=> 2x^3 + 4x^2 - 30x = 0     /* divide by 2 */
+<=> x^3 + 2x^2 - 15x = 0      /* `x` as a common factor */
+<=> x(x^2 + 2x - 15) = 0      /* using the quadratic formula,
+                                solve the second degree equation*/
+<=> x = 0
+ \/ x = (-2 + sqrt(2^2 -4*1*(-15)))/(2*1)
+ \/ x = (-2 - sqrt(2^2 -4*1*(-15)))/(2*1)
+      /* perform arithmetic with numbers */
+<=> x = 0
+ \/ x = (-2 + sqrt(4 + 60))/2
+ \/ x = (-2 - sqrt(4 + 60))/2  /**/
+<=> x = 0
+ \/ x = (-2 + 8)/2
+ \/ x = (-2 - 8)/2  /**/
