@@ -16,6 +16,6 @@ fields: # näiden täytyy olla valideja HTML-formien attribuutteja
 
 # configuration for the new Docker container grading sandbox
 container:
-  image: sesodesa/grade-mathcheck:latest
+  image: sesodesa/grade-mathcheck:2019-04-22
   mount: exercises/mathcheck-example
   cmd: /exercise/run.sh
