@@ -49,6 +49,7 @@ programs that create random instances.
   :config: exercises/personalized_python/config.yaml
 
 
+<<<<<<< HEAD
 Detailed description of the "Personalized number" exercise
 ----------------------------------------------------------
 
@@ -116,6 +117,12 @@ submit before the personalized exercise is regenerated (the exercise instance is
 changed to another one). If unset, the exercise is never regenerated.
 
 
+=======
+
+Detailed description of the "Personalized number" exercise
+----------------------------------------------------------
+
+>>>>>>> e285de37ba805c5552c2416822048beca3eb9608
 Exercise instance generation
 ............................
 
@@ -189,6 +196,7 @@ inside the *mooc-grader container* looks like this:
           └── number
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .. admonition:: The role of the exercise generator and supported software
   :class: info
@@ -223,6 +231,8 @@ inside the *mooc-grader container* looks like this:
 
 
 >>>>>>> d13d4046466002716e5285e69b91e48f99ed1f1c
+=======
+>>>>>>> e285de37ba805c5552c2416822048beca3eb9608
 
 Grading the exercise
 ....................
@@ -292,6 +302,7 @@ grading script can give for the exercise. Note that ``B`` can be different that
 what is set in the ``max_points`` part of the **config.yaml** file of the
 exercise; A+ will rescale the points if necessary.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 Detailed description of the "Personalized Python" exercise
@@ -340,3 +351,5 @@ student. **run.sh** modifies the ``PYTHONPATH`` environment variable for easy
 import. The output from the grading script is very similar to the one in the
 "Personalized number" exercise.
 >>>>>>> d13d4046466002716e5285e69b91e48f99ed1f1c
+=======
+>>>>>>> e285de37ba805c5552c2416822048beca3eb9608
