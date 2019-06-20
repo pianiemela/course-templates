@@ -116,7 +116,6 @@ submit before the personalized exercise is regenerated (the exercise instance is
 changed to another one). If unset, the exercise is never regenerated.
 
 
->>>>>>> refs/remotes/origin/master
 Exercise instance generation
 ............................
 
@@ -221,9 +220,6 @@ inside the *mooc-grader container* looks like this:
   containers.
 
 
-=======
->>>>>>> e285de37ba805c5552c2416822048beca3eb9608
->>>>>>> refs/remotes/origin/master
 
 Grading the exercise
 ....................
