@@ -188,8 +188,6 @@ inside the *mooc-grader container* looks like this:
       └── 9
           └── number
 
-<<<<<<< HEAD
-=======
 .. admonition:: The role of the exercise generator and supported software
   :class: info
 
@@ -222,7 +220,6 @@ inside the *mooc-grader container* looks like this:
   containers.
 
 
->>>>>>> d13d4046466002716e5285e69b91e48f99ed1f1c
 
 Grading the exercise
 ....................
@@ -291,8 +288,6 @@ the solution. ``B`` is a positive integer: the maximum score that the
 grading script can give for the exercise. Note that ``B`` can be different that
 what is set in the ``max_points`` part of the **config.yaml** file of the
 exercise; A+ will rescale the points if necessary.
-<<<<<<< HEAD
-=======
 
 Detailed description of the "Personalized Python" exercise
 ----------------------------------------------------------
@@ -339,4 +334,3 @@ The grading script **check.py** imports the **solution.py** submitted by the
 student. **run.sh** modifies the ``PYTHONPATH`` environment variable for easy
 import. The output from the grading script is very similar to the one in the
 "Personalized number" exercise.
->>>>>>> d13d4046466002716e5285e69b91e48f99ed1f1c
