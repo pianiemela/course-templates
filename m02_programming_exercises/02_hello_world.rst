@@ -13,6 +13,13 @@ This is the configuration file ``docker-compose.yml``:
 
 Note: acos is an optional component used for interactive exercises.
 
+.. submit:: mathcheck 10
+  :config: exercises/mathcheck-example/config.yaml
+
+.. submit:: geogebra2 10
+  :config: exercises/geogebra-example/config.yaml
+
+
 .. submit:: python 10
   :config: exercises/hello_python/config.yaml
 
@@ -22,8 +29,7 @@ Note: acos is an optional component used for interactive exercises.
 .. submit:: javascript 10
   :config: exercises/hello_javascript/config.yaml
 
-.. submit:: mathcheck 10
-  :config: exercises/mathcheck-example/config.yaml
+
 
 Be careful with the RST and YAML syntaxes. They are too easy to break
 with blank space and indentations.
