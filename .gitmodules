@@ -1,3 +1,6 @@
 [submodule "a-plus-rst-tools"]
 	path = a-plus-rst-tools
 	url = https://github.com/Aalto-LeTech/a-plus-rst-tools.git
+[submodule "exercises/abitti-example/digabi-os"]
+	path = exercises/abitti-example/digabi-os
+	url = git@github.com:pianiemela/digabi-os.git
