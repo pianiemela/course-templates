@@ -9,7 +9,8 @@ cp /exercise/*.js .
 
 # "capture" etc description in https://github.com/apluslms/grading-base
 
-cat v | capture nodejs tests.js 
+echo $1
+cat v | capture nodejs tests.js $1
 
 err-to-out
 grade

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>GeoGebra</title>
+  <script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+  <script>
+
+    window.onmessage = function (e) {
+      cmd = e.data;
+      cmd = replaceAll(cmd, ";", " \n ");
+      initApplet();
+    };
+
+    function initCommands() {
+      ggbApplet.evalCommand(cmd);
+      function addListener() {
+        var o_str = "";
+        var names = ggbApplet.getAllObjectNames();
+        for (var i = 0, name = ""; i < names.length, name = names[i]; i++) {
+          var val_str = ggbApplet.getValueString(name);
+          o_str += (val_str + ",");
+        }
+        parent.postMessage(o_str, "*");
+        //window.parent.document.getElementById("v_id").value=o_str;
+      }
+      ggbApplet.registerAddListener(addListener);
+      ggbApplet.registerUpdateListener(addListener);
+    }
+
+    function initApplet() {
+
+      var params = {
+        "allowStyleBar": false,
+        "appName": "graphing",
+        "width": window.innerWidth,
+        "height": window.innerHeight,
+        "language": "fi-FI",
+        "showToolBar": true,
+        "showAlgebraInput": true,
+        "showMenuBar": true,
+        "appletOnLoad": initCommands
+      };
+
+      var ggbApplet = new GGBApplet(params, true);
+      ggbApplet.inject('ggb-element');
+      // window.onload = function () { ggbApplet.inject('ggb-element'); }
+    }
+
+    function replaceAll(str, find, replace) {
+      return str.replace(new RegExp(find, 'g'), replace);
+    }
+
+  </script>
+
+</head>
+
+<body>
+  <div id="ggb-element"></div>
+</body>
+
+</html>

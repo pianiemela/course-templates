@@ -4,16 +4,25 @@ description: An example of grading Geogebra code with Node.js
 instructions: |
   <p>This page shows how to register JavaScript functions as
     listeners to changes in a GeoGebra
-    construction. See <a href="https://www.geogebra.org/manual/en/Reference:JavaScript#Event_listeners">Event Listeners</a> for a syntax description of the used
-    methods.
-  	<iframe id="serviceFrameSend" src="/static/default/_static/ggbEx.html" width="1000" height="600" frameborder="0"></iframe>
+    construction. See <a href="https://www.geogebra.org/manual/en/Reference:JavaScript#Event_listeners">Event
+      Listeners</a> for a syntax description of the used methods.
+    <iframe id="ggbFrame" src="/static/default/_static/child.html" onload="postMsg();" width="1000" height="600" frameborder="0"></iframe>
 
     <script type="text/javascript">
-      var eventMethod = window.addEventListener? "addEventListener": "attachEvent";
+      function postMsg() {
+        var ggbFrame = document.getElementById("ggbFrame");
+        // TODO: Hello Teacher, edit cmd! 
+        // TODO: The very same cmds that you inserted in the GeoGebra web UI apply.
+        // TODO: semi-colon(;) separates the commands.
+        cmd = "A=(0,0)";
+        cmd = "a=Slider(0,5,0.1,1,250,false,true,false,false);SetValue(a,1);c=Circle((0,0), a)";
+        ggbFrame.contentWindow.postMessage(cmd, '*');
+      };
+      var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];
-      var messageEvent = eventMethod === "attachEvent" ? "onmessage": "message";
+      var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
       eventer(messageEvent, function (e) {
-        var data = (typeof e.data) === "string"?e.data:"";
+        var data = (typeof e.data) === "string" ? e.data : "";
         document.getElementById("v_id").value = data;
       });
     </script>
@@ -22,11 +31,11 @@ instructions: |
 # tiedoston palautuslomakkeen sijaan
 view_type: access.types.stdasync.acceptPost 
 fields: # näiden täytyy olla valideja HTML-formien attribuutteja
-  - name: v # Lomakkeen nimi verkkosivulla
+  - name: v # Lomakkeen nimi verkkosivulla, täytyy olla yksikäsitteinen ja sopia yhteen v_id:n kanssa (ks.yllä)
     title: Ratkaisu #Näkyy syötekentän yläpuolella
     required: True
 
 container:
   image: apluslms/grade-nodejs:11-2.7
   mount: exercises/geogebra-example
-  cmd: /exercise/run.sh
+  cmd: /exercise/run.sh '{"A":1,"B":2}'

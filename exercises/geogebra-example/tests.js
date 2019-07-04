@@ -9,13 +9,31 @@ Object.size = function (obj) {
     return size;
 };
 
+function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
+
 function testTeacherVsStudent(teacherInput, studentInput) {
     var l = Object.size(teacherInput);
     if (l < 2) {
-        return teacherInput === studentInput;
+        try{
+            return teacherInput === studentInput;
+        }catch(exp){
+            return false;
+        }
     }
-    if (typeof (teacherInput) === "number")
-        return teacherInput[0] < studentInput < teacherInput[1];
+
+    try {
+        t1 = parseFloat(teacherInput[0]);
+        t2 = parseFloat(teacherInput[1]);
+        return t1 < studentInput < t2;
+    }
+    catch (exp) { }
+
+    for (var i = 0; i < l; i++) {
+        if (teacherInput[i] !== studentInput[i]) return false;
+    }
+    return true;
 }
 
 const testFunctions = [
@@ -23,14 +41,11 @@ const testFunctions = [
 ];
 
 function testMain(teacherInput, studentInput) {
-    // console.log("in testMain");
     let testsOk = 0;
     let success = true;
     for (let test of testFunctions) {
-        let msg = "Testing " + test + " ... ";
-        // console.log(msg);
-        // for (const [key, t] of teacherInput.entries()) {
-
+        let msg = "Testing " + test.toString().split("\n")[0] + " ... ";
+        console.error(msg);
         for (var key in teacherInput) {
             var t = teacherInput[key];
             // console.log(key, t, studentInput, (key in studentInput));
@@ -39,7 +54,7 @@ function testMain(teacherInput, studentInput) {
                 var s = studentInput[key];
                 // console.log(t, s);
                 success = test(t, s);
-                success ? console.error(msg, " ok ", key, ": points: ", testsOk++) : console.error(msg + "fail");
+                success ? console.error(msg, " ok ", key, ": points: ", ++testsOk) : console.error(msg + "fail");
             }
         }
     }
@@ -56,8 +71,8 @@ if (require.main === module) {
 
     var teacherInput = {};
     var studentInput = {};
-    var obj = JSON.parse(process.argv[2]);
-    // console.log(obj);
+    var input = replaceAll(process.argv[2], "'", "");
+    var obj = JSON.parse(input);
 
     for (var par in obj) {
         var val = obj[par];
@@ -68,34 +83,37 @@ if (require.main === module) {
     var fs = require('fs');
     fs.readFile('v', 'utf8', function (err, contents) {
         // console.log(contents);
+        console.error('answer ',contents, " checked");
         if (contents) {
             var parts = contents.split(",");
             for (var i = 0; i < parts.length; i++) {
-                var part = parts[i];
-                var par = part.split("=")[0].trim();
+                var part = parts[i].trim();
+                if (part.length<2) break;
+                var key = part.split("=")[0].trim();
                 var val = part.split("=")[1].trim();
                 try {
                     val = parseInt(val);
                 }
                 catch (e) { }
-                try {
-                    val = parseFloat(val);
+                if (typeof (val) !== "number") {
+                    try {
+                        val = parseFloat(val);
+                    }
+                    catch (e2) { }
                 }
-                catch (e2) { }
 
                 // console.log("student", par, val);
                 // studentInput.set(par, val);
-                studentInput[par] = val;
+                studentInput[key] = val;
             }
         }
     });
 
-    // TODO: remove this
-    // studentInput.set("a", 1);
-    studentInput["a"] = 1;
+    // studentInput["a"] = [1,2];
+    // studentInput["b"] = 2;
 
     const result = testMain(teacherInput, studentInput);
-    // console.log("TotalPoints: ", result.totalPoints);
-    // console.log("MaxPoints: ", result.maxPoints);
+    console.error("TotalPoints: ", result.totalPoints);
+    console.error("MaxPoints: ", result.maxPoints);
     return true;
 }
