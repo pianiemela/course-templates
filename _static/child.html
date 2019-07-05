@@ -21,8 +21,13 @@
         var names = ggbApplet.getAllObjectNames();
         for (var i = 0, name = ""; i < names.length, name = names[i]; i++) {
           var val_str = ggbApplet.getValueString(name);
-          o_str += (val_str + ",");
+          o_str += (val_str + ";");
         }
+        // for (var i = 0, name = ""; i < names.length, name = names[i]; i++) {
+        //   var val_str = ggbApplet.getCommandString(name);
+        //   o_str += (name+": "+ val_str + ";");
+        // }
+
         parent.postMessage(o_str, "*");
         //window.parent.document.getElementById("v_id").value=o_str;
       }

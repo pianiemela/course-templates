@@ -10,6 +10,8 @@ Object.size = function (obj) {
 };
 
 function replaceAll(str, find, replace) {
+    if (str===undefined) return str;
+    if (str==="") return str;
     return str.replace(new RegExp(find, 'g'), replace);
 }
 
@@ -28,17 +30,17 @@ function testTeacherVsStudent(teacherInput, studentInput) {
         t2 = parseFloat(teacherInput[1]);
         return t1 < studentInput < t2;
     }
-    catch (exp) { 
+    catch (exp) {
         // return false;
     }
 
-    try{
+    try {
         for (var i = 0; i < l; i++) {
             if (teacherInput[i] !== studentInput[i]) return false;
         }
         return true;
     }
-    catch(exp){
+    catch (exp) {
         return false;
     }
 }
@@ -52,8 +54,8 @@ function testMain(teacherInput, studentInput) {
     let success = true;
     for (let test of testFunctions) {
         let msg = "Testing " + test.toString().split("\n")[0] + " ... ";
-        console.error(msg);
-        if (teacherInput.length>1){
+        // console.error(msg);
+        if (teacherInput.length > 1) {
             for (var key in teacherInput) {
                 var t = teacherInput[key];
                 // console.log(key, t, studentInput, (key in studentInput));
@@ -61,37 +63,46 @@ function testMain(teacherInput, studentInput) {
                 if (key in studentInput) {
                     var s = studentInput[key];
                     // console.log(t, s);
-                    try{
+                    try {
                         success = test(t, s);
-                    }catch(exp){
+                    } catch (exp) {
                         success = false;
                     }
                     if (success) {
-                        console.error(msg, " ok ", key, ": points: ", ++testsOk);
+                        ++testsOk;
+                        // console.error(msg, " ok ", key, ": points: ", ++testsOk);
                     }
-                    else console.error(msg + "fail");
+                    // else console.error(msg + "fail");
                 }
             }
         }
-        else{
-            try{
+        else {
+            try {
                 success = test(teacherInput, studentInput);
-            }catch(exp){
+            } catch (exp) {
                 success = false;
             }
             if (success) {
-                console.error(msg, " ok ", key, ": points: ", ++testsOk);
+                ++testsOk;
+                // console.error(msg, " ok ", key, ": points: ", ++testsOk);
             }
-            else console.error(msg + "fail");
+            // else console.error(msg + "fail");
         }
     }
     // console.log(teacherInput,teacherInput.size);
-    var l = Object.size(teacherInput);
-    var totalPossible = testFunctions.length * l;
-    
+    var l = 0;
+    if (Object!==undefined){
+        try{
+            l = Object.size(teacherInput);
+        }catch(exp){}
+    }
+
+  
     // taken the max of 10, we estimate total based on passed exercises
     var maxPoints = 10;
-    var total = Math.round(testsOk/totalPossible * maxPoints);
+    var totalPossible = testFunctions.length * l;
+    if (totalPossible==0) totalPossible = maxPoints;  
+    var total = Math.round(testsOk / totalPossible * maxPoints);
 
     return {
         totalPoints: total,
@@ -104,7 +115,10 @@ if (require.main === module) {
     var teacherInput = {};
     var studentInput = {};
     var input = replaceAll(process.argv[2], "'", "");
-    var obj = JSON.parse(input);
+    var obj;
+    try{
+        obj = JSON.parse(input);
+    }catch(exp){}
 
     for (var par in obj) {
         var val = obj[par];
@@ -115,28 +129,36 @@ if (require.main === module) {
     var fs = require('fs');
     fs.readFile('v', 'utf8', function (err, contents) {
         // console.log(contents);
-        console.error('answer ', contents, " checked");
+        // console.error('answer ', contents, " checked");
         if (contents) {
-            var parts = contents.split(",");
+            var parts = contents.split(";");
             for (var i = 0; i < parts.length; i++) {
                 var part = parts[i].trim();
                 if (part.length < 2) break;
-                var key = part.split("=")[0].trim();
-                var val = part.split("=")[1].trim();
-                try {
-                    val = parseInt(val);
-                }
-                catch (e) { }
-                if (typeof (val) !== "number") {
-                    try {
-                        val = parseFloat(val);
-                    }
-                    catch (e2) { }
-                }
 
-                // console.log("student", par, val);
-                // studentInput.set(par, val);
-                studentInput[key] = val;
+                var assigns = part.split("=");
+                if (assigns.length < 2) {
+                    assigns = part.split(":");
+                }
+                if (assigns.length > 1) {
+                    var key = assigns[0].trim();
+                    var val = assigns[1].trim();
+                    try {
+                        val = parseInt(val);
+                    }
+                    catch (e) {
+                        if (typeof (val) !== "number") {
+                            try {
+                                val = parseFloat(val);
+                            }
+                            catch (e2) { }
+                        }
+
+                        // console.log("student", par, val);
+                        // studentInput.set(par, val);
+                    }
+                    studentInput[key] = val;
+                }
             }
         }
     });
@@ -145,7 +167,9 @@ if (require.main === module) {
     // studentInput["b"] = 2;
 
     const result = testMain(teacherInput, studentInput);
-    console.error("TotalPoints: ", result.totalPoints);
-    console.error("MaxPoints: ", result.maxPoints);
-    return true;
+    // console.error("TotalPoints: ", result.totalPoints);
+    // console.error("MaxPoints: ", result.maxPoints);
+    console.error(result.totalPoints + "/" + result.maxPoints);
+
+    return result.totalPoints + "/" + result.maxPoints;
 }
