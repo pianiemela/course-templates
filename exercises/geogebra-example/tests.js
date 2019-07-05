@@ -16,9 +16,9 @@ function replaceAll(str, find, replace) {
 function testTeacherVsStudent(teacherInput, studentInput) {
     var l = Object.size(teacherInput);
     if (l < 2) {
-        try{
+        try {
             return teacherInput === studentInput;
-        }catch(exp){
+        } catch (exp) {
             return false;
         }
     }
@@ -28,12 +28,19 @@ function testTeacherVsStudent(teacherInput, studentInput) {
         t2 = parseFloat(teacherInput[1]);
         return t1 < studentInput < t2;
     }
-    catch (exp) { }
-
-    for (var i = 0; i < l; i++) {
-        if (teacherInput[i] !== studentInput[i]) return false;
+    catch (exp) { 
+        // return false;
     }
-    return true;
+
+    try{
+        for (var i = 0; i < l; i++) {
+            if (teacherInput[i] !== studentInput[i]) return false;
+        }
+        return true;
+    }
+    catch(exp){
+        return false;
+    }
 }
 
 const testFunctions = [
@@ -46,16 +53,36 @@ function testMain(teacherInput, studentInput) {
     for (let test of testFunctions) {
         let msg = "Testing " + test.toString().split("\n")[0] + " ... ";
         console.error(msg);
-        for (var key in teacherInput) {
-            var t = teacherInput[key];
-            // console.log(key, t, studentInput, (key in studentInput));
+        if (teacherInput.length>1){
+            for (var key in teacherInput) {
+                var t = teacherInput[key];
+                // console.log(key, t, studentInput, (key in studentInput));
 
-            if (key in studentInput) {
-                var s = studentInput[key];
-                // console.log(t, s);
-                success = test(t, s);
-                success ? console.error(msg, " ok ", key, ": points: ", ++testsOk) : console.error(msg + "fail");
+                if (key in studentInput) {
+                    var s = studentInput[key];
+                    // console.log(t, s);
+                    try{
+                        success = test(t, s);
+                    }catch(exp){
+                        success = false;
+                    }
+                    if (success) {
+                        console.error(msg, " ok ", key, ": points: ", ++testsOk);
+                    }
+                    else console.error(msg + "fail");
+                }
             }
+        }
+        else{
+            try{
+                success = test(teacherInput, studentInput);
+            }catch(exp){
+                success = false;
+            }
+            if (success) {
+                console.error(msg, " ok ", key, ": points: ", ++testsOk);
+            }
+            else console.error(msg + "fail");
         }
     }
     // console.log(teacherInput,teacherInput.size);
@@ -83,12 +110,12 @@ if (require.main === module) {
     var fs = require('fs');
     fs.readFile('v', 'utf8', function (err, contents) {
         // console.log(contents);
-        console.error('answer ',contents, " checked");
+        console.error('answer ', contents, " checked");
         if (contents) {
             var parts = contents.split(",");
             for (var i = 0; i < parts.length; i++) {
                 var part = parts[i].trim();
-                if (part.length<2) break;
+                if (part.length < 2) break;
                 var key = part.split("=")[0].trim();
                 var val = part.split("=")[1].trim();
                 try {
