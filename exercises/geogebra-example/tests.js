@@ -87,9 +87,14 @@ function testMain(teacherInput, studentInput) {
     }
     // console.log(teacherInput,teacherInput.size);
     var l = Object.size(teacherInput);
-    var maxPoints = testFunctions.length * l;
+    var totalPossible = testFunctions.length * l;
+    
+    // taken the max of 10, we estimate total based on passed exercises
+    var maxPoints = 10;
+    var total = Math.round(testsOk/totalPossible * maxPoints);
+
     return {
-        totalPoints: testsOk,
+        totalPoints: total,
         maxPoints: maxPoints
     };
 }
