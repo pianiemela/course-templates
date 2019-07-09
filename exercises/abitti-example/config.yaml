@@ -4,16 +4,9 @@ instructions: |
   <p>This page shows how to register JavaScript functions as
     listeners to changes in a Abitti
     editor.
-    <iframe id="abittiFrame" src="https://tie-lukioplus.rd.tuni.fi/abitti/" onload="postMsg();" width="1000" height="600" frameborder="0"></iframe>
+    <iframe id="abittiFrame" src="https://tie-lukioplus.rd.tuni.fi/abitti/" width="1000" height="600" frameborder="0"></iframe>
 
     <script type="text/javascript">
-      function postMsg() {
-        # var abittiFrame = document.getElementById("abittiFrame");
-        # // TODO: Hello Teacher, edit jax_content! 
-        # // TODO: semi-colon(;) separates the commands.
-        # var jax_content = "pia testaa";
-        # abittiFrame.contentWindow.postMessage(jax_content, '*');
-      };
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];
       var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
