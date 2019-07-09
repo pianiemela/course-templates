@@ -18,6 +18,7 @@ instructions: |
       var eventer = window[eventMethod];
       var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
       eventer(messageEvent, function (e) {
+        console.log(e.data);
         var data = (typeof e.data) === "string" ? e.data : "";
         # document.getElementById("abitti_v_id").style.display = "none";
         document.getElementById("abitti_v_id").value = data;
