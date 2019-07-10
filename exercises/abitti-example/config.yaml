@@ -14,13 +14,14 @@ instructions: |
         // TODO: semi-colon(;) separates the commands.
         var conf = "conf";
         ggbFrame.contentWindow.postMessage(conf, '*');
+        document.getElementById("v_id").style.display = "none";
       };
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];
       var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
       eventer(messageEvent, function (e) {
       var data = (typeof e.data) === "string" ? e.data : "";
-       document.getElementById("v_id").value = data;
+      document.getElementById("v_id").value = data;
       });
     </script>
   </p>
