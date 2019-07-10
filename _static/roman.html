@@ -1,0 +1,276 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="http://w3.romascuola.net/gspes/gs.ico">
+  <base id="bt">
+  <title>pa&#285;</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      line-height: 1.2
+    }
+
+    a:link,
+    a:visited {
+      text-decoration: none;
+      color: gold
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+      color: red
+    }
+  </style>
+  <style id="stid"></style>
+  <script language="javascript">
+    function ogg(id) {
+      if (document.getElementById)
+        return document.getElementById(id);
+      else if (document.layers)
+        return document.layers[id];
+      else if (document.all)
+        return document.all[id];
+      else { alert("nessun supporto per DHTML"); return false; }
+    }
+    function dec(testo) {
+      return decodeURIComponent(testo);
+    }
+    function val(par) {
+      var regexS = "[\\?&]" + par + "=([^&#]*)";
+      var regex = new RegExp(regexS);
+      var ris = regex.exec(window.location.search);
+      if (ris == null)
+        return "";
+      else
+        return ris[1];
+    }
+    function par(p) { return dec(val(p)); };
+    function mod(x) {
+      x = (x == 'j') ? 'justify' : x;
+      x = (x == 'g') ? 'justify' : x;
+      x = (x == 'l') ? 'left' : x;
+      x = (x == 's') ? 'left' : x;
+      x = (x == 'r') ? 'right' : x;
+      x = (x == 'd') ? 'right' : x;
+      x = (x == 'c') ? 'center' : x;
+      return x;
+    }
+    function col(x) {
+      x = (x == 'r') ? 'red' : x;
+      x = (x == 'lr') ? 'tomato' : x;
+      x = (x == 'dr') ? 'darkred' : x;
+      x = (x == 'g') ? 'green' : x;
+      x = (x == 'lg') ? 'lightgreen' : x;
+      x = (x == 'dg') ? 'darkgreen' : x;
+      x = (x == 'pg') ? 'palegreen' : x;
+      x = (x == 'fg') ? 'forestgreen' : x;
+      x = (x == 'lag') ? 'lawngreen' : x;
+      x = (x == 'sg') ? 'seagreen' : x;
+      x = (x == 'lsg') ? 'lightseagreen' : x;
+      x = (x == 'dsg') ? 'darkseagreen' : x;
+      x = (x == 'msg') ? 'mediumseagreen' : x;
+      x = (x == 'spg') ? 'springgreen' : x;
+      x = (x == 'mspg') ? 'mediumspringgreen' : x;
+      x = (x == 'gy') ? 'greenyellow' : x;
+      x = (x == 'b') ? 'blue' : x;
+      x = (x == 'lb') ? 'lightblue' : x;
+      x = (x == 'db') ? 'darkblue' : x;
+      x = (x == 'mb') ? 'mediumblue' : x;
+      x = (x == 'mnb') ? 'midnightblue' : x;
+      x = (x == 'sb') ? 'slateblue' : x;
+      x = (x == 'dsb') ? 'darkslateblue' : x;
+      x = (x == 'msb') ? 'mediumslateblue' : x;
+      x = (x == 'skb') ? 'skyblue' : x;
+      x = (x == 'lskb') ? 'lightskyblue' : x;
+      x = (x == 'dskb') ? 'deepskyblue' : x;
+      x = (x == 'stb') ? 'steelblue' : x;
+      x = (x == 'lstb') ? 'lightsteelblue' : x;
+      x = (x == 'ab') ? 'aliceblue' : x;
+      x = (x == 'cb') ? 'cadetblue' : x;
+      x = (x == 'rb') ? 'royalblue' : x;
+      x = (x == 'pb') ? 'powderblue' : x;
+      x = (x == 'cfb') ? 'cornflowerblue' : x;
+      x = (x == 'dob') ? 'dodgerblue' : x;
+      x = (x == 'bv') ? 'blueviolet' : x;
+      x = (x == 'c') ? 'cyan' : x;
+      x = (x == 'lc') ? 'lightcyan' : x;
+      x = (x == 'dc') ? 'darkcyan' : x;
+      x = (x == 'm') ? 'magenta' : x;
+      x = (x == 'dm') ? 'darkmagenta' : x;
+      x = (x == 'y') ? 'yellow' : x;
+      x = (x == 'ly') ? 'lightyellow' : x;
+      x = (x == 'yg') ? 'yellowgreen' : x;
+      x = (x == 'o') ? 'orange' : x;
+      x = (x == 'do') ? 'darkorange' : x;
+      x = (x == 'orr') ? 'orangered' : x;
+      x = (x == 'v') ? 'violet' : x;
+      x = (x == 'dv') ? 'darkviolet' : x;
+      x = (x == 'vr') ? 'violetred' : x;
+      x = (x == 'lvr') ? 'palevioletred' : x;
+      x = (x == 'pvr') ? 'palevioletred' : x;
+      x = (x == 'mvr') ? 'mediumvioletred' : x;
+      x = (x == 'i') ? 'indigo' : x;
+      x = (x == 'l') ? 'lavender' : x;
+      x = (x == 'lbl') ? 'lavenderblush' : x;
+      x = (x == 's') ? 'salmon' : x;
+      x = (x == 'ls') ? 'lightsalmon' : x;
+      x = (x == 'ds') ? 'darksalmon' : x;
+      x = (x == 'f') ? 'fuchsia' : x;
+      x = (x == 'k') ? 'khaki' : x;
+      x = (x == 'dk') ? 'darkkhaki' : x;
+      x = (x == 'n') ? 'navy' : x;
+      x = (x == 't') ? 'tan' : x;
+      x = (x == 'w') ? 'white' : x;
+      x = (x == 'lw') ? 'snow' : x;
+      x = (x == 'dw') ? 'ghostwhite' : x;
+      x = (x == 'ws') ? 'whitesmoke' : x;
+      x = (x == 'aw') ? 'antiquewhite' : x;
+      x = (x == 'fw') ? 'floralwhite' : x;
+      x = (x == 'nw') ? 'navajowhite' : x;
+      x = (x == 'bl') ? 'black' : x;
+      x = (x == 'p') ? 'pink' : x;
+      x = (x == 'lp') ? 'lightpink' : x;
+      x = (x == 'dp') ? 'deeppink' : x;
+      x = (x == 'hp') ? 'hotpink' : x;
+      x = (x == 'gr') ? 'gray' : x;
+      x = (x == 'lgr') ? 'lightgray' : x;
+      x = (x == 'dgr') ? 'darkgray' : x;
+      x = (x == 'sgr') ? 'slategray' : x;
+      x = (x == 'lsgr') ? 'lightslategray' : x;
+      x = (x == 'dsgr') ? 'darkslategray' : x;
+      x = (x == 'dim') ? 'dimgray' : x;
+      x = (x == 'be') ? 'beige' : x;
+      x = (x == 'br') ? 'brown' : x;
+      x = (x == 'lbr') ? 'sandybrown' : x;
+      x = (x == 'sbr') ? 'saddlebrown' : x;
+      x = (x == 'rbr') ? 'rosybrown' : x;
+      x = (x == 'go') ? 'gold' : x;
+      x = (x == 'lgo') ? 'lightgoldenrodyellow' : x;
+      x = (x == 'dgo') ? 'darkgoldenrod' : x;
+      x = (x == 'mgo') ? 'goldenrod' : x;
+      x = (x == 'pgo') ? 'palegoldenrod' : x;
+      x = (x == 'ir') ? 'indianred' : x;
+      x = (x == 'li') ? 'lime' : x;
+      x = (x == 'lig') ? 'limegreen' : x;
+      x = (x == 'iv') ? 'ivory' : x;
+      x = (x == 'si') ? 'silver' : x;
+      x = (x == 'tu') ? 'turquoise' : x;
+      x = (x == 'ltu') ? 'paleturquoise' : x;
+      x = (x == 'ptu') ? 'paleturquoise' : x;
+      x = (x == 'mtu') ? 'mediumturquoise' : x;
+      x = (x == 'dtu') ? 'darkturquoise' : x;
+      x = (x == 'pe') ? 'peru' : x;
+      x = (x == 'ma') ? 'maroon' : x;
+      x = (x == 'sie') ? 'sienna' : x;
+      x = (x == 'aq') ? 'aqua' : x;
+      x = (x == 'am') ? 'aquamarine' : x;
+      x = (x == 'mam') ? 'mediumaquamarine' : x;
+      x = (x == 'or') ? 'orchid' : x;
+      x = (x == 'mor') ? 'mediumorchid' : x;
+      x = (x == 'dor') ? 'darkorchid' : x;
+      x = (x == 'mr') ? 'mistyrose' : x;
+      x = (x == 'mc') ? 'mintcream' : x;
+      x = (x == 'pu') ? 'purple' : x;
+      x = (x == 'mpu') ? 'mediumpurple' : x;
+      x = (x == 'te') ? 'teal' : x;
+      x = (x == 'th') ? 'thistle' : x;
+      x = (x == 'wh') ? 'wheat' : x;
+      x = (x == 'az') ? 'azure' : x;
+      x = (x == 'bi') ? 'bisque' : x;
+      x = (x == 'ba') ? 'blanchedalmond' : x;
+      x = (x == 'bw') ? 'burlywood' : x;
+      x = (x == 'ch') ? 'chartreuse' : x;
+      x = (x == 'cc') ? 'chocolate' : x;
+      x = (x == 'mse') ? 'mediumseagreen' : x;
+      x = (x == 'ss') ? 'seashell' : x;
+      x = (x == 'pl') ? 'plum' : x;
+      x = (x == 'pp') ? 'peachpuff' : x;
+      x = (x == 'ol') ? 'olive' : x;
+      x = (x == 'lol') ? 'olivedrab' : x;
+      x = (x == 'dol') ? 'darkolivegreen' : x;
+      x = (x == 'mo') ? 'moccasin' : x;
+      x = (x == 'la') ? 'oldlace' : x;
+      x = (x == 'co') ? 'coral' : x;
+      x = (x == 'lco') ? 'lightcoral' : x;
+      x = (x == 'cs') ? 'cornsilk' : x;
+      x = (x == 'cr') ? 'crimson' : x;
+      x = (x == 'fb') ? 'firebrick' : x;
+      x = (x == 'gb') ? 'gainsboro' : x;
+      x = (x == 'hd') ? 'honeydew' : x;
+      x = (x == 'lch') ? 'lemonchiffon' : x;
+      x = (x == 'ln') ? 'linen' : x;
+      x = (x == 'pw') ? 'papayawhip' : x;
+      return x;
+    }
+    function loadjscssfile(filename, filetype) {
+      if (filetype == "js") {
+        var fileref = document.createElement('script');
+        fileref.setAttribute("type", "text/javascript");
+        fileref.setAttribute("src", filename)
+      }
+      else if (filetype == "css") {
+        var fileref = document.createElement("link");
+        fileref.setAttribute("rel", "stylesheet");
+        fileref.setAttribute("type", "text/css");
+        fileref.setAttribute("href", filename)
+      }
+      if (typeof fileref != "undefined") document.getElementsByTagName("head")[0].appendChild(fileref)
+    };
+    function J(filename) { loadjscssfile(filename, "js") };
+    function C(filename) { loadjscssfile(filename, "css") };
+  </script>
+
+  <script>
+    l = (val('l') == '') ? '' : 'http://' + dec(val('l')) + '.css';
+    document.write("<li" + "nk  rel='stylesheet' type='text/css' href='" + dec(l) + "'/>");
+  </script>
+
+  <script>
+    m = (val('m') == '') ? '' : 'http://' + dec(val('m')) + '.css';
+    document.write("<li" + "nk  rel='stylesheet' type='text/css' href='" + dec(m) + "'/>");
+  </script>
+
+  <script>
+    j = (val('j') == '') ? '' : 'http://' + dec(val('j')) + '.js';
+    document.write("<scr" + "ipt src='" + dec(j) + "'></scr" + "ipt>");
+  </script>
+  <script>
+    k = (val('k') == '') ? '' : 'http://' + dec(val('k')) + '.js';
+    document.write("<scr" + "ipt src='" + dec(k) + "'></scr" + "ipt>");
+  </script>
+
+
+  <script>
+    ni = 'pa\u011D';
+    ti = 'Sintassi: <a target="_blank" href="http://www.facebook.com/gaespespag">...pag.htm?p=v&p=v&p=v&...</a><br>(p indica il parametro, v indica il valore)<hr>parametri:<br>a: allineamento del testo (default=justify)<br>&nbsp; (valore: justify / j / g, left / l / s, right / r / d, center / c)<br>b: colore base (sfondo)(default=blu-notte)<br>c: colore carattere (default=argento)<br>d (oppure g): dimensione (grandezza) carattere (default=50)<br>e: stile degli elementi (css interno)<br>f: font (tipo di carattere)(default=Verdana)<br>h: hyperlink di base (base.href)<br>i: finestra di inclusione dei link (base.target)(default=_self; altri valori: b / p / t)<br>j, k: indirizzi dei js esterni da caricare, privati di http:// iniziale e .js finale<br>l, m: indirizzi dei css esterni da caricare, privati di http:// iniziale e .css finale<br>n: nome (titolo) del documento (default=pa\u011D)<br>p: script da eseguire dopo (post) t<br>s: script da eseguire prima di t<br>t: testo HTML (default = la presente pagina)<br>u: ulteriore testo dopo s, t, p<br>bs: stile aggiuntivo globale per il documento (body.style).<br><br>Inoltre, librerie js o css si caricano mettendo nel valore del parametro s le istruzioni J(URLjs), C(URLcss). Se risulta necessario caricarli con maggiore anticipo rispetto agli script in s e in p, usare i parametri j, k, l, m.';
+
+    a = (val('a') == '') ? 'justify' : mod(val('a'));				//allineamento testo
+    b = (val('b') == '') ? 'midnightblue' : dec(col(val('b')));			//colore sfondo
+    bs = (val('bs') == '') ? '' : dec(val('bs'));				//stile aggiuntivo body
+    c = (val('c') == '') ? 'silver' : dec(col(val('c')));			//colore testo
+    e = (val('e') == '') ? '' : dec(val('e'));				//stile css
+    f = (val('f') == '') ? 'Arial' : dec(val('f'));				//tipo di font
+    g = ((val('g') == '') && (val('d') == '')) ? '50' : (val('g') == '') ? val('d') : val('g'); //grandezza (dimensione) carattere
+    h = (val('h') == '') ? 'w3.romascuola.net/gspes' : dec(val('h'));		//hyperlink di base (base.href)
+    i = (val('i') == '') ? '_self' : (val('i') == 'b') ? '_blank' : (val('i') == 'p') ? '_parent' : (val('i') == 't') ? '_top' : ''; //base.target
+    n = (val('n') == '') ? ni : dec(val('n'));				//nome documento (titolo)
+    p = (val('p') == '') ? '' : '\x3Cscript>' + dec(val('p')) + '\x3C/script>';	//script posposto a t
+    s = (val('s') == '') ? '' : '\x3Cscript>' + dec(val('s')) + '\x3C/script>';	//script anteposto a t
+    t = (val('t') + s + p == '') ? ti : dec(val('t'));				//t=codice HTML
+    u = (val('u') + s + p + t == '') ? '' : dec(val('u'));			//u=codice HTML finale
+
+    ogg('bt').href = 'http://' + h + '/';
+    ogg('bt').target = i;
+
+    stile = 'font-size:' + g + ';text-align:' + a + ';color:' + c + ';font-family:' + f + ';background-color:' + b + ';' + bs;
+    tt = '<body style="' + stile + '">' + s + t + p + u + '</body>';
+    ogg('stid').innerHTML = e;
+  </script>
+</head>
+<script>document.title = n; document.write(tt);</script>
+
+</html>

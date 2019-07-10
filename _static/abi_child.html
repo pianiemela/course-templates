@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <link rel = "stylesheet" type = "text/css"  href = "/static/default/_static/course.css" />
+  <title>Abitti</title>
+  <script>
+      window.onmessage = function (e) {
+        var data = e.data;
+        console.log(data);
+        if (data==="conf"){
+          var abiFrame = document.getElementById("abi_id");
+          //if (abiFrame.src==="")
+          abiFrame.src = "http://localhost:5000";
+        }
+        else{
+          parent.postMessage(data,"*");
+        }
+
+    };
+    function submitToParent(){
+      var data = document.getElementById("tmp_abitti_id").value;  
+      parent.postMessage(data,"*");
+    }
+
+  </script>
+</head>
+
+<body>
+    <script type="text/javascript">
+      var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+      var eventer = window[eventMethod];
+      var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+      eventer(messageEvent, function (e) {
+        var data = (typeof e.data) === "string" ? e.data : "";
+        console.log(data);
+        //document.getElementById("abitti_v_id").style.display = "none";
+        document.getElementById("tmp_abitti_id").value = data;
+        //parent.postMessage(data,"*");
+        console.log("after post",data);
+      });
+    </script>
+    <iframe id="abi_id" src="" width="100%" height="100%" style="min-height: 530px"></iframe>
+    <form method="POST">
+  <textarea id="tmp_abitti_id" style="display:none;"></textarea>
+
+  <!-- <input id="abi_submit_id" type="submit" value="Lähetä" style="background:#337AB7; padding: 6px 12px;" onclick="submitToParent();"> -->
+  </form>
+
+</body>
+
+</html>

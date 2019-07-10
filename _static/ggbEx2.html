@@ -25,9 +25,6 @@
             </p>
             <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
             <script type="text/javascript">
-
-
-
                 var parameters = {
                     "prerelease": false, "width": 600, "height": 450,
                     "showToolBar": true, "borderColor": null, "showMenuBar": false, "showAlgebraInput": true,
@@ -39,21 +36,19 @@
 
                 parameters.appletOnLoad = function (api) {
                     var strLength = 150;
-
-                    // api.evalCommand("A=(0,0)");
-
+                    api.evalCommand("A=(0,0)");
                     // var textarea1 = document.getElementsByName("textarea1")[0];
                     // var textarea2 = document.getElementsByName("textarea2")[0];
                     // var consState = document.getElementsByName("consState")[0];
 
                     function addListener(objName) {
-                        console.log("addListener0 ", objName);
+                        console.log("addListener0 ",objName);
 
-                        // textarea1.value = "add: " + objName + "\n" + textarea1.value.substring(0, strLength);
+                        textarea1.value = "add: " + objName + "\n" + textarea1.value.substring(0, strLength);
                         if (objName === "v") {
                             data = api.getValueString("v");
                             data2 = api.getValueString("f");
-                            parent.postMessage(data + "; " + data2, "*");
+                            parent.postMessage(data+"; "+data2, "*");
                         }
 
                         printConstructionState();
@@ -74,7 +69,7 @@
                     function updateListener(objName) {
                         data = api.getValueString("v");
                         data2 = api.getValueString("f");
-                        parent.postMessage(data + "; " + data2, "*");
+                        parent.postMessage(data+"; "+data2, "*");
 
                         // strVal = api.getValueString(objName);
                         // textarea2.value = objName + ": " + strVal + "\n" + textarea2.value.substring(0, strLength);
@@ -119,12 +114,11 @@
 
                 window.onload = function () {
                     applet.inject('applet_container');
-
                 }
             </script>
             <p></p>
             <div id="applet_container"></div>
-            <style>
+             <style>
                 label {
                     display: block;
                 }

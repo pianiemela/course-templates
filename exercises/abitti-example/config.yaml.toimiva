@@ -15,6 +15,7 @@ instructions: |
         var conf = "conf";
         ggbFrame.contentWindow.postMessage(conf, '*');
       };
+      document.getElementById("v_id").style.display = "none";
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];
       var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
@@ -27,7 +28,7 @@ instructions: |
 # acceptPost tuottaa tekstikentÃ¤n sivulle
 # tiedoston palautuslomakkeen sijaan
 view_type: access.types.stdasync.acceptPost 
-fields: # näiden täytyy olla valideja HTML-formien attribuutteja
+fields: # nÃ¤iden tÃ¤ytyy olla valideja HTML-formien attribuutteja
   - name: v # Lomakkeen nimi verkkosivulla, tÃ¤ytyy olla yksikÃ¤sitteinen ja sopia yhteen v_id:n kanssa (ks.yllÃ¤) ja run.sh:n kanssa (ks.alla)
     required: True
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>GeoGebra</title>
+  <script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+  <script>
+    var params = {
+      "allowStyleBar": false,
+      "appName": "graphing",
+      "width": window.innerWidth,
+      "height": window.innerHeight * 0.8,
+      "language": "en-US",
+      "showToolBar": true,
+      "showAlgebraInput": true,
+      "showMenuBar": true,
+      "appletOnLoad": initCommands
+    };
+
+    function initCommands() {
+      // TODO: Hello Teacher, edit this. The very same cmds that you inserted in the web UI.
+      // TODO: \n is separating the commands
+      cmd = "a=Slider(0,5,0.1,1,250,false,true,false,false) \n SetValue(a,1) \n c=Circle((0,0), a)";
+      ggbApplet.evalCommand(cmd);
+      function addListener(){ 
+        var o_str = "";
+        var names = ggbApplet.getAllObjectNames()
+        for (var i=0;i<names.length;i++){
+          var name = names[i];
+          var val_str=ggbApplet.getValueString(name);
+          o_str += (val_str+";");
+        }
+        document.getElementById("v_id").value=o_str;
+      }
+      ggbApplet.registerAddListener(addListener);
+      ggbApplet.registerUpdateListener(addListener);
+    }
+    var ggbApplet = new GGBApplet(params, true);
+    window.onload = function () { ggbApplet.inject('ggb-element');}
+  </script>
+</head>
+
+<body>
+  <div id="ggb-element"></div>
+  <input type="text" id="v_id">
+
+</body>
+
+</html>

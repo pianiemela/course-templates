@@ -8,30 +8,9 @@
   <script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
   <script>
 
-    function parseData(data){
-      var reserved = ["cmd:", '{"par":'];
-      var cmdIndex = data.indexOf(reserved[0]);
-      var parIndex = data.indexOf(reserved[1]);
-      console.log(cmdIndex, parIndex);
-
-      var cmd = "";
-      var par = "";
-
-      cmd = data.substring(reserved[0].length,parIndex);
-      par = data.substring(parIndex+reserved[1].length);
-      par = par.substring(0,par.length-1); //to remove the last "}"
-      console.log(cmd,par);
-      return [cmd,par];
-
-    }
-
-
     window.onmessage = function (e) {
-      var ret = parseData(e.data);     
-      cmd = ret[0];
+      cmd = e.data;
       cmd = replaceAll(cmd, ";", " \n ");
-      par = ret[1];     
-      //cmd = e.data.substring(4);
       initApplet();
     };
 
@@ -40,18 +19,25 @@
       function addListener() {
         var o_str = "";
         var names = ggbApplet.getAllObjectNames();
+
         for (var i = 0, name = ""; i < names.length, name = names[i]; i++) {
           var val_str = ggbApplet.getValueString(name);
           o_str += (val_str + ";");
         }
+        o_str += "\n";
+        command.log(o_str);
+        for (var i = 0, name = ""; i < names.length, name = names[i]; i++) {
+          var val_str = ggbApplet.getCommandString(name);
+          o_str += (val_str + ";");
+        }
+        o_str += "\n";
+        command.log(o_str);
 
-
-        // for (var i = 0, name = ""; i < names.length, name = names[i]; i++) {
-        //   var val_str = ggbApplet.getCommandString(name);
-        //   o_str += (name+": "+ val_str + ";");
-        // }
+        o_str += ggbApplet.getPerspectiveXML();
+        command.log(o_str);
 
         parent.postMessage(o_str, "*");
+        //window.parent.document.getElementById("v_id").value=o_str;
       }
       ggbApplet.registerAddListener(addListener);
       ggbApplet.registerUpdateListener(addListener);
@@ -59,16 +45,17 @@
 
     function initApplet() {
 
-      var params={};
-      if (par!=="")
-        params = JSON.parse(par);
-//        params = {"appName": "graphing", "allowStyleBar": false, "showToolBar": true, "showAlgebraInput": true, "showMenuBar": true};
-        
-      params["language"]="fi";
-      params["width"]= window.innerWidth;
-      params["height"]= window.innerHeight;
-      params["appletOnLoad"]=initCommands;
-
+      var params = {
+        "allowStyleBar": false,
+        "appName": "graphing",
+        "width": window.innerWidth,
+        "height": window.innerHeight,
+        "language": "fi-FI",
+        "showToolBar": true,
+        "showAlgebraInput": true,
+        "showMenuBar": true,
+        "appletOnLoad": initCommands
+      };
 
       var ggbApplet = new GGBApplet(params, true);
       ggbApplet.inject('ggb-element');
