@@ -128,12 +128,11 @@ if (require.main === module) {
     fs.readFile(fileName, 'utf8', function (err, contents) {
         getMap(contents, studentInput);
         var result = testMain(teacherInput, studentInput);
-        // var res_points = result.points + "/" + result.max_points;
-        var res_points = result.points + "/10";
-        console.log(res_points, "<br>");
+        console.log(result.points,"/"+result.max_points+"<br>");
         console.log(result.msg, "<br>");
-        fs.writeFile("\feedback\points", res_points, (err) => { if (err) console.log(err); });
-        fs.writeFile("\feedback\out", result.msg + "\nTulos: " + res_points, (err) => { if (err) console.log(err); });
-        return res_points;
+        console.error("TotalPoints: ", result.points);	    // console.error("TotalPoints: ", result.totalPoints);
+        console.error("MaxPoints: ", result.max_points);	    // console.error("MaxPoints: ", result.maxPoints);
     });
+    return true;
+
 }
