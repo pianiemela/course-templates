@@ -26,7 +26,7 @@
 
     window.onmessage = function (e) {
       // cmd and par as global variables
-      console.log("onmessage - here ",e.data);
+      console.log("onmessage: ",e.data);
 
       var ggbData = parseData(e.data);
 
@@ -63,13 +63,6 @@
           var val_str = ggbApplet.getValueString(name);
           o_str += (val_str + ";");
         }
-
-
-        // for (var i = 0, name = ""; i < names.length, name = names[i]; i++) {
-        //   var val_str = ggbApplet.getCommandString(name);
-        //   o_str += (name+": "+ val_str + ";");
-        // }
-
         parent.postMessage(o_str, "*");
       }
       ggbApplet.registerAddListener(addListener);

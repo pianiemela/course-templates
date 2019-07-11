@@ -27,8 +27,9 @@ function testTeacherVsStudent(teacherInput, studentInput) {
 
     var points = 0;
     Object.keys(teacherInput).forEach(function (key) {
-        var value = teacherInput[key];
-        if (value.length > 1) {
+        var value = teacherInput[key].trim();
+
+        if (Array.isArray(value) ) {
             // if two numbers given, the value must locate in the range
             var studentValue = studentInput[key];
             if (studentValue) {
@@ -44,11 +45,15 @@ function testTeacherVsStudent(teacherInput, studentInput) {
         }
         else {
             try {
-                if (value.toString() === studentInput[key]) {
+                var studentValue = studentInput[key].toString().trim().replace(" ","");
+                value = value.toString()
+                if (value === studentValue) {
                     points++;
                     msg = msg + key + " &#128077;<br>";
                 }
-                else msg = msg + key + " &#128078;<br>";
+                else {
+                    msg = msg + key + " &#128078;<br>";
+                }
             }
             catch (exp) { console.log(exp); }
         }
@@ -113,7 +118,7 @@ if (require.main === module) {
         // single quotes removed 
         var input = replaceAll(process.argv[3], "'", "");
         teacherInput = JSON.parse(input);
-    } catch (exp) { }
+    } catch (exp) {console.log(exp);}
 
     // first parameter must be a file name, defaults to "v".
     // Yet multiple variables in the same page with the same name "v" 
@@ -132,8 +137,10 @@ if (require.main === module) {
         console.log(result.points+"/"+result.max_points+"<br>");
         console.log(result.msg+"<br>");
         console.error("TotalPoints: ", result.points);	    
-        console.error("MaxPoints: ", result.max_points);	  
-        if (result.points/result.max_points>0.5){
+        console.error("MaxPoints: ", result.max_points);
+        console.error("filename: "+fileName);
+        console.error(teacherInput);
+    if (result.points/result.max_points>0.5){
             console.error("Hienoa!");
         }
     });

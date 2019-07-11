@@ -9,6 +9,11 @@ YAML file.
 .. submit:: geogebra2 10
   :config: exercises/geogebra-example/config.yaml
 
+
+.. submit:: geogebra3 10
+  :config: exercises/geogebra-example/config2.yaml
+
+
 .. submit:: mathcheck 10
   :config: exercises/mathcheck-example/config.yaml
 
