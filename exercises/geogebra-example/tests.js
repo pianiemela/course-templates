@@ -18,56 +18,50 @@ function replaceAll(str, find, replace) {
 // studentInput as similar commands as inserted to GeoGebra, separator is ";"
 // Each teacherInput grants one point if it matches - matching means str equivalence
 function testTeacherVsStudent(teacherInput, studentInput) {
-    var max_points = Object.size(teacherInput);
-    var msg;
+    var msg="";
     Object.keys(studentInput).forEach(function (key) {
         var value = studentInput[key];
         msg = msg + key + "=" + value + ";";
     });
-    msg = msg + "\n";
+    msg = msg + "<br>";
 
     var points = 0;
     Object.keys(teacherInput).forEach(function (key) {
         var value = teacherInput[key];
-        console.log(value);
         if (value.length > 1) {
             // if two numbers given, the value must locate in the range
             var studentValue = studentInput[key];
             if (studentValue) {
-                console.log("in test");
                 try {
                     studentValue = parseFloat(studentValue);
-                    console.log("in test", studentValue);
                     if (parseFloat(value[0]) < studentValue < parseFloat(value[1])) {
                         points++;
-                        msg += (studentValue + " OK\n");
+                        msg += (studentValue + " OK<br>");
                     }
                 }
                 catch (exp) { console.log(exp); }
             }
         }
         else {
-            value = value.toString();
-            // console.log(key, value);
-            if (key in studentInput) {
-                var value_student = studentInput[key];
-                // console.log(key, " in student ", value_student);
-                if (value === value_student) {
+            try {
+                if (value.toString() === studentInput[key]) {
                     points++;
-                    msg = msg + key + " OK \n"
+                    msg = msg + key + " OK<br>";
                 }
             }
+            catch (exp) { console.log(exp); }
         }
     });
-    console.log(points, max_points, msg);
-    return [points, max_points, msg];
+    return {
+        points:points, 
+        msg:msg
+    };
 }
 
 
-function getMap(str) {
-    // console.log(str);
+function getMap(str, studentInput) {
+    if (str.length === 0) return {};
     var commands = str.split(";");
-    var studentMap = {};
     for (var i = 0; i < commands.length; i++) {
         var command = commands[i];
         var parts = command.split(":");
@@ -77,11 +71,9 @@ function getMap(str) {
         if (parts.length > 1) {
             value = parts[1].trim();
         }
-        console.log(key, value);
-        studentMap[key] = value;
+        if (key === "") continue;
+        studentInput[key] = value;
     }
-
-    return studentMap;
 }
 
 
@@ -90,20 +82,18 @@ const testFunctions = [
 ];
 
 function testMain(teacherInput, studentInput) {
-    // var testsOk = 0;
     var points = 0;
     var max_points = 0;
-    var success = true;
     var msg = "";
 
-    for (var test in testFunctions) {
-        msg = msg + "Testing " + test.toString().split("\n")[0] + " ... \n";
+    for (var test of testFunctions) {
+        msg = msg + "Testing " + test.toString().split("\n")[0] + " ... <br>";
+        max_points += Object.size(teacherInput);
         try {
-            var res = test(t, s);
-            points += res[0];
-            max_points += res[1];
-            msg = msg + res[2];
-        } catch (exp) { }
+            var res = test(teacherInput, studentInput);
+            points = points + res.points;
+            msg = msg + res.msg;
+        } catch (exp) { console.log(exp); }
     }
 
     return {
@@ -129,20 +119,21 @@ if (require.main === module) {
     var fileName = "v"; //student input, defaults to "v"    
     try {
         fileName = process.argv[2];
-    } catch (exp) { }
-    console.log("filename: ", fileName);
+    } catch (exp) { console.log(exp); }
+    // console.log("filename: ", fileName);
 
     // read "v"
     var studentInput = {};
     var fs = require('fs');
     fs.readFile(fileName, 'utf8', function (err, contents) {
-        if (contents) studentInput = getMap(contents);
+        getMap(contents, studentInput);
+        var result = testMain(teacherInput, studentInput);
+        // var res_points = result.points + "/" + result.max_points;
+        var res_points = result.points + "/10";
+        console.log(res_points, "<br>");
+        console.log(result.msg, "<br>");
+        fs.writeFile("\feedback\points", res_points, (err) => { if (err) console.log(err); });
+        fs.writeFile("\feedback\out", result.msg + "\nTulos: " + res_points, (err) => { if (err) console.log(err); });
+        return res_points;
     });
-
-
-    const result = testMain(teacherInput, studentInput);
-    var res_points = result.points + "/" + result.max_points;
-    fs.writeFile("\feedback\points", res_points, (err) => { if (err) console.log(err); });
-    fs.writeFile("\feedback\output", result.msg+"\n Tulos: "+res_points, (err) => { if (err) console.log(err); });
-    return result.totalPoints + "/" + result.maxPoints;
 }

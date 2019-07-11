@@ -11,7 +11,8 @@ cp /exercise/*.js .
 
 
 # cat v | capture nodejs tests.js $1
-capture nodejs tests.js $1 $2
+capture nodejs tests.js $1 $2 
+nodejs tests.js >/feedback/points
 
 
 err-to-out
