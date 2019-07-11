@@ -46,8 +46,9 @@ function testTeacherVsStudent(teacherInput, studentInput) {
             try {
                 if (value.toString() === studentInput[key]) {
                     points++;
-                    msg = msg + key + " OK<br>";
+                    msg = msg + key + " &#128077;<br>";
                 }
+                else msg = msg + key + " &#128078;<br>";
             }
             catch (exp) { console.log(exp); }
         }
@@ -59,7 +60,8 @@ function testTeacherVsStudent(teacherInput, studentInput) {
 }
 
 
-function getMap(str, studentInput) {
+function getMap(str) {
+    var studentInput={}
     if (str.length === 0) return {};
     var commands = str.split(";");
     for (var i = 0; i < commands.length; i++) {
@@ -74,6 +76,7 @@ function getMap(str, studentInput) {
         if (key === "") continue;
         studentInput[key] = value;
     }
+    return studentInput;
 }
 
 
@@ -120,18 +123,19 @@ if (require.main === module) {
     try {
         fileName = process.argv[2];
     } catch (exp) { console.log(exp); }
-    // console.log("filename: ", fileName);
 
-    // read "v"
-    var studentInput = {};
+    // read "v" or fileName
     var fs = require('fs');
     fs.readFile(fileName, 'utf8', function (err, contents) {
-        getMap(contents, studentInput);
+        var studentInput = getMap(contents);
         var result = testMain(teacherInput, studentInput);
-        console.log(result.points,"/"+result.max_points+"<br>");
-        console.log(result.msg, "<br>");
-        console.error("TotalPoints: ", result.points);	    // console.error("TotalPoints: ", result.totalPoints);
-        console.error("MaxPoints: ", result.max_points);	    // console.error("MaxPoints: ", result.maxPoints);
+        console.log(result.points+"/"+result.max_points+"<br>");
+        console.log(result.msg+"<br>");
+        console.error("TotalPoints: ", result.points);	    
+        console.error("MaxPoints: ", result.max_points);	  
+        if (result.points/result.max_points>0.5){
+            console.error("Hienoa!");
+        }
     });
     return true;
 
