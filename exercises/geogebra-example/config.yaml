@@ -14,9 +14,12 @@ instructions: |
         // TODO: Hello Teacher, edit cmd! 
         // TODO: The very same cmds that you inserted in the GeoGebra web UI apply.
         // TODO: semi-colon(;) separates the commands.
-        cmd = "A=(0,0)";
-        cmd = "a=Slider(0,5,0.1,1,250,false,true,false,false);SetValue(a,1);c=Circle((0,0), a)";
-        ggbFrame.contentWindow.postMessage(cmd, '*');
+        //var cmd = "A=(0,0)";
+        var cmd = "a=Slider(0,5,0.1,1,250,false,true,false,false);SetValue(a,1);c=Circle((0,0), a)";
+        var par = '{"appName": "graphing", "allowStyleBar": false, "showToolBar": true, "showAlgebraInput": true, "showMenuBar": true}';
+        // TODO: do not remove \n
+        ggbFrame.contentWindow.postMessage(cmd+"\n"+par, '*');
+        document.getElementById("v_id").style.display = "none";
       };
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];
@@ -31,11 +34,10 @@ instructions: |
 # tiedoston palautuslomakkeen sijaan
 view_type: access.types.stdasync.acceptPost 
 fields: # näiden täytyy olla valideja HTML-formien attribuutteja
-  - name: v # Lomakkeen nimi verkkosivulla, täytyy olla yksikäsitteinen ja sopia yhteen v_id:n kanssa (ks.yllä)
-    title: Ratkaisu #Näkyy syötekentän yläpuolella
+  - name: v # Lomakkeen nimi verkkosivulla, täytyy olla yksikäsitteinen ja sopia yhteen v_id:n kanssa (ks.yllä, kahdessa kohtaa)
     required: True
 
 container:
   image: apluslms/grade-nodejs:11-2.7
   mount: exercises/geogebra-example
-  cmd: /exercise/run.sh '{"A":1,"B":2}'
+  cmd: /exercise/run.sh v '{"A":1,"B":2}'
