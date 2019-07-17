@@ -45,7 +45,8 @@ function testTeacherVsStudent(teacherInput, studentInput) {
         }
         else {
             try {
-                var studentValue = studentInput[key].toString().trim().replace(" ","");
+                var studentValue = studentInput[key];
+		if (studentValue) studentValue=studentValue.toString().trim().replace(" ","");
                 value = value.toString().trim();
                 if (value === studentValue) {
                     points++;
@@ -139,10 +140,11 @@ if (require.main === module) {
         console.error("TotalPoints: ", result.points);	    
         console.error("MaxPoints: ", result.max_points);
         console.error("filename: "+fileName);
-        console.error(teacherInput);
-    if (result.points/result.max_points>0.5){
-            console.error("Hienoa!");
-        }
+        //console.error(teacherInput);
+    if (result.points/result.max_points>0.5) console.error("Hienoa!");
+    else if (result.points/result.max_points==0.5) console.error("Lähellä!");
+    else console.error("Yritä vielä!");
+        
     });
     return true;
 
