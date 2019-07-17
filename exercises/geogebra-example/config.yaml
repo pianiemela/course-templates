@@ -6,7 +6,7 @@ instructions: |
     listeners to changes in a GeoGebra
     construction. See <a href="https://www.geogebra.org/manual/en/Reference:JavaScript#Event_listeners">Event
       Listeners</a> for a syntax description of the used methods.
-    <iframe id="ggbFrame" src="/static/default/_static/child.html" onload="postMsg();" width="1000" height="600" frameborder="0"></iframe>
+    <iframe id="ggbFrame" src="/grader/static/santtufork/_static/child.html" onload="postMsg();" width="1000" height="600" frameborder="0"></iframe>
 
     <script type="text/javascript">
       function postMsg() {

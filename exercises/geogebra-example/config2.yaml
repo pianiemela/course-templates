@@ -6,7 +6,7 @@ instructions: |
   jolloin jalka pitäisi sijoittaa pöytälevyn painopisteeseen. Määritä pöytälevyn painopiste alla olevalla GeoGebra-appletilla. 
   Varmista, että nimeät painopisteen kirjaimella D.
 
-    <iframe id="ggbFrame_v2" src="/static/default/_static/child.html" onload="postMsg();" width="1000" height="600" frameborder="0"></iframe>
+    <iframe id="ggbFrame_v2" src="/grader/static/santtufork/_static/child.html" onload="postMsg();" width="1000" height="600" frameborder="0"></iframe>
 
     <script type="text/javascript">
       function postMsg() {

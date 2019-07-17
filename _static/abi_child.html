@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name=viewport content="width=device-width,initial-scale=1">
-  <link rel = "stylesheet" type = "text/css"  href = "/static/default/_static/course.css" />
+  <link rel = "stylesheet" type = "text/css"  href = "course.css" />
   <title>Abitti</title>
   <script>
       window.onmessage = function (e) {
@@ -13,7 +13,7 @@
         if (data==="conf"){
           var abiFrame = document.getElementById("abi_id");
           //if (abiFrame.src==="")
-          abiFrame.src = "http://localhost:5000";
+          abiFrame.src = "https://tie-lukioplus.rd.tuni.fi/abitti/";
         }
         else{
           parent.postMessage(data,"*");
