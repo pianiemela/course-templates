@@ -27,7 +27,7 @@ function testTeacherVsStudent(teacherInput, studentInput) {
 
     var points = 0;
     Object.keys(teacherInput).forEach(function (key) {
-        var value = teacherInput[key].trim();
+        var value = teacherInput[key];
 
         if (Array.isArray(value) ) {
             // if two numbers given, the value must locate in the range
@@ -46,13 +46,13 @@ function testTeacherVsStudent(teacherInput, studentInput) {
         else {
             try {
                 var studentValue = studentInput[key].toString().trim().replace(" ","");
-                value = value.toString()
+                value = value.toString().trim();
                 if (value === studentValue) {
                     points++;
-                    msg = msg + key + " &#128077;<br>";
+                    msg = msg + key + " &#128077;<br>";   //thumbs-up
                 }
                 else {
-                    msg = msg + key + " &#128078;<br>";
+                    msg = msg + key + " &#128078;<br>";  //thumbs-down
                 }
             }
             catch (exp) { console.log(exp); }
