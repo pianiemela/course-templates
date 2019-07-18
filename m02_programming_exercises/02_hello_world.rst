@@ -1,10 +1,9 @@
-Hello programming
------------------
+Hello LukioPlussa!
+------------------
 
-This chapter includes three exercises on one page. Questionnaires and
-submission forms can exist anywhere and as many on one page as required.
-The automatic assessment of a submission is defined in the referenced
-YAML file.
+Esimerkit demoavat, miten LukioPlussaan integroituja järjestelmiä voidaan käyttää.
+Eri tehtävätyyppejä voidaan sisällyttää sivulle useita, mutta jos kyseessä on 
+raskas lataus, voi sivun latautumisessa kestää ja harjoitukset ilmestyvät vähitellen.
 
 .. submit:: geogebra2 10
   :config: exercises/geogebra-example/config.yaml
