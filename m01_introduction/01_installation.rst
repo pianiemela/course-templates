@@ -1,10 +1,10 @@
-First Steps
-===========
+Maailma muuttuu, niin OPSikin
+=============================
 
 .. styled-topic::
 
-  Main questions:
-      How to install this course, A+ and related software to your computer.
+  Kurssin tavoite:
+      Tutustua TODO
 
   Topics?
       Installing Docker and Docker Compose

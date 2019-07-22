@@ -1,5 +1,5 @@
-A sample course
-===============
+Didaktisia apuvälineitä matematiikkaan
+======================================
 
 This index lists an entry for each learning module on course.
 Other content is not visible in A+.
@@ -8,4 +8,12 @@ Other content is not visible in A+.
   :maxdepth: 2
 
 
-  m02_programming_exercises/index
+   m01_introduction/index
+   m02_programming_exercises/index
+   m03_acos/index
+   m04_didactics/index  
+   m05_learningDisorders/index
+   m06_computationalThinking/index
+   m07_finalWords/index
+
+

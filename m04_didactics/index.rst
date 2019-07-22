@@ -1,5 +1,5 @@
-Module 4 - Converting an old course for current A+
---------------------------------------------------
+Didaktisia näkökulmia
+---------------------
 
 Introduction to developing course on A-Plus learning management service.
 
@@ -7,3 +7,4 @@ Introduction to developing course on A-Plus learning management service.
 
   01_virtualenv_to_docker
   02_chapter_workflow
+  aino_ahtinen
