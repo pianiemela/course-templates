@@ -4,7 +4,7 @@ instructions: |
   <p>This page shows how to register JavaScript functions as
     listeners to changes in a Abitti
     editor.
-    <iframe id="ggbFrame" src="/static/default/_static/abi_child.html" onload="postMsg();" width="1000" height="600" frameborder="0"></iframe>
+    <iframe id="ggbFrame" src="/grader/static/santtufork/_static/abi_child.html" onload="postMsg();" width="1000" height="600" frameborder="0"></iframe>
 
     <script type="text/javascript">
       function postMsg() {
