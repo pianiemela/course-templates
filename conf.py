@@ -31,7 +31,7 @@ static_host = os.environ.get('STATIC_CONTENT_HOST')
 # and in production, the URL of the ACOS production server.
 #acos_submit_base_url = 'https://acos.cs.aalto.fi'
 #acos_submit_base_url = 'http://172.21.0.4:3000'
-acos_submit_base_url = 'https://tie-acos.rd.tuni.fi/'
+acos_submit_base_url = 'https://tie-acos.rd.tuni.fi'
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
