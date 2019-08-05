@@ -1,6 +1,6 @@
 Maailma muuttuu, niin OPSikin
 =============================
-
+  
 .. styled-topic::
 
   Kurssin tavoite:
