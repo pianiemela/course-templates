@@ -4,9 +4,9 @@ Maailma muuttuu, niin OPSikin
 .. styled-topic::
 
   Kurssin tavoite:
-    Tutustua käänteiseen oppimiseen (flipped learning) oppimismetodologiana,
-    mm. kielentämiseen, simulaatioihin ja pelillisiin tehtävätyyppeihin, joita
-    LukioPlussa tarjoaa.
+    Tutustua käänteiseen oppimiseen (flipped learning) oppimismetodologiana
+    ja mm. kielentämiseen, simulaatioihin ja pelillisiin tehtävätyyppeihin,
+    joita LukioPlussa tarjoaa.
 
   Topics?
       Installing Docker and Docker Compose
