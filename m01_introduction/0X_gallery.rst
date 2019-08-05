@@ -1,11 +1,11 @@
-Gallery of features
-===================
+Galleria tehtävätyypeistä
+=========================
 
-This section is a visual index of exercises and services that have been used
-with A+.
+Tässä osassa listataan tehtävätyypit, joita LukioPlussa tukee:
 
-Exercises
----------
+
+Tehtävät
+--------
 
 Point and click
 ...............
