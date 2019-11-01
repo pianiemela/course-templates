@@ -5,6 +5,10 @@ Esimerkit demoavat, miten LukioPlussaan integroituja järjestelmiä voidaan käy
 Eri tehtävätyyppejä voidaan sisällyttää sivulle useita, mutta jos kyseessä on 
 raskas lataus, voi sivun latautumisessa kestää ja harjoitukset ilmestyvät vähitellen.
 
+
+.. submit:: helloTema 10
+  :url: https://tie-lukioplus.rd.tuni.fi/tema/
+
 .. submit:: geogebra2 10
   :config: exercises/geogebra-example/config.yaml
 
