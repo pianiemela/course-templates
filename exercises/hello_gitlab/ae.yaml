@@ -1,0 +1,35 @@
+---
+title: GitLab grading
+description: Just echoes back the input text
+max_points: 0
+
+instructions: |
+
+  <p>Info for gitlab grading 
+    <script type="text/javascript">
+      document.getElementById("giturl_id").placeholder = "Git url of your repository";
+      document.getElementById("githash_id").placeholder = "GitHASH of your submission";
+      document.getElementById("jobname_id").style.display = "none";
+      document.getElementById("jobname_id").value = "MochaTests";
+
+      document.getElementById("giturl_id").style.height = '40px';
+      document.getElementById("githash_id").style.height = '40px';
+      document.getElementById("jobname_id").style.height = '40px';
+    </script>
+  </p>
+
+#feedback_template: ./aelements/ae_feedback.html
+view_type: access.types.stdasync.acceptPost
+
+fields:
+  - name: giturl
+    required: True
+  - name: githash
+    required: False
+  - name: jobname
+    required: False
+
+container:
+  image: piasniemela/grade-python-pycurl
+  mount: exercises/hello_gitlab
+  cmd: /exercise/ae.sh giturl githash jobname 
